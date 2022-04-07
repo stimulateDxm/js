@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼吸轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: relative;
+            margin: 0 auto;
+            width: 400px;
+            height: 400px;
+           
+        }
+
+       ul{
+           width: 2400px;
+           position: absolute;
+           left: 0;
+           top: 0;
+           transition: opacity 1s ease 0s;
+       }
+       li{
+        list-style: none;
+       }
+       ul li{
+           position: absolute;
+           left: 0;
+           top: 0;
+           opacity: 0;
+          
+       }
+     ul .frist{
+          opacity: 1;
+      }
+       img{
+          width: 400px;
+          height: 400px;
+       }
+       ol{
+           width: 400px;
+           height: 400px;
+           position: absolute;
+           display: flex;
+           justify-content: space-between;
+           flex-wrap: nowrap;
+           align-items: center;
+       }
+       ol li{
+           background-color: aqua;
+           width: 50px;
+           line-height: 50px;
+           border-radius: 50%;
+           color: white;
+           font-size: 40px;
+           text-align: center;
+           margin-top: -25px;
+           opacity: 0.6;
+
+       }
+       ol li:hover{
+           opacity: 0.9;
+       }
+    di{
+        position: relative;
+    }
+    #didi{
+        position: absolute;
+        display: flex;
+        flex-wrap: nowrap;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 38%;
+        top: 90%; 
+    }
+       #didi li{
+           width: 10px;
+           height: 10px;
+           border-radius: 50%;
+           background-color: #fff;
+           margin: 0 5px;
+          
+       }
+       #didi li:first-child{
+        background-color: red;
+       }
+       #didi li:hover{
+           background-color: red;
+       }
+    </style>
+</head>
+<body>
+    <div id="di">
+        <ul id="uls">
+         <li class="frist"><a href=""><img src="./assets/1.jpg" alt=""></a></li>
+         <li><a href=""><img src="./assets/2.jpg" alt=""></a></li>
+         <li><a href=""><img src="./assets/3.jpg" alt=""></a></li>
+         <li><a href=""><img src="./assets/4.jpg" alt=""></a></li>
+         <li><a href=""><img src="./assets/5.jpg" alt=""></a></li>
+         <li><a href=""><img src="./assets/6.jpg" alt=""></a></li>
+       
+        </ul>
+        <ol>
+            <li id="lt"> &lt;</li>
+            <li id="gt"> &gt;</li>
+        </ol>
+        <div id="didi">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+    </div>
+    <script>
+     let uls=document.getElementById('uls')
+     let lt=document.getElementById('lt')
+     let gt=document.getElementById('gt')
+     let di=document.getElementById('di')
+     let lis=document.querySelectorAll('ul li')
+     let didi=document.querySelectorAll('#didi li')
+    
+     let lock=true;
+     let a=0;
+     let timer1;
+    //  自动向右切换
+
+    function mose(){
+        if(!lock) return;
+        lock=false
+        lis[a].style.opacity=0
+        didi[a].style.backgroundColor="#fff"
+        a++
+        if(a==6){
+            a=0
+        }
+        lis[a].style.opacity=1
+        didi[a].style.backgroundColor="red"
+    
+        setTimeout(()=>{
+            lock=true;
+        },500)
+    }
+  
+
+   
+     //移入图片时停止播放
+    di.addEventListener('mouseenter',()=>{
+        console.log('11')
+        clearInterval(timer1)
+    })
+     //离开图片时播放
+     di.addEventListener('mouseleave',()=>{
+         timer1=setInterval(()=>{
+            mose()
+         },2000) 
+     })
+    
+    //  点左向左切换
+    lt.addEventListener('click',()=>{
+        if(!lock) return;
+        lock=false
+        lis[a].style.opacity=0
+        didi[a].style.backgroundColor="#fff"
+        a--
+        if(a==-1){
+            a=5
+        }
+        lis[a].style.opacity=1
+        didi[a].style.backgroundColor="red"
+        setTimeout(()=>{
+            lock=true;
+        },500)
+    })
+    // 点右向右切换
+    gt.addEventListener('click', mose
+    )
+    //  点击圆点切换到对应的图片
+    for (let i=0; i<didi.length; i++){
+        didi[i].addEventListener('click',function(){
+        a=i
+        for (let j=0; j<didi.length; j++){
+            lis[j].style.opacity=0
+            didi[j].style.backgroundColor="#fff"
+
+        }
+        lis[a].style.opacity=1
+        didi[a].style.backgroundColor="red"
+       
+    })
+    }
+    
+    </script>
+</body>
+</html>

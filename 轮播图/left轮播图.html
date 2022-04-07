@@ -95,7 +95,7 @@
          if(a===6){
              a=0
          }
-         },1000)
+         },2000)
          setTimeout(()=>{
              lock=true
          },1000)
@@ -103,7 +103,6 @@
      mose();
      //移入图片时停止播放
      di.addEventListener("mouseenter",()=>{
-         console.log('11')
         clearInterval(timer1)
      })
      //离开图片时播放
@@ -112,22 +111,30 @@
      })
     //  点左向左切换
      lt.addEventListener("click",()=>{
-        console.log(a)
+        if(!lock)return;
+         lock=false
              a--;
              if(a===-1){
                  a=5;
              }
              uls.style.left=a*-400+"px"
-             console.log(a)
+             setTimeout(()=>{
+             lock=true
+         },1000)
             
      })
 // 点右向右切换
      gt.addEventListener("click",()=>{
+        if(!lock)return;
+         lock=false
         a++
          uls.style.left=a*-400+"px"
          if(a===6){
              a=0
          }
+         setTimeout(()=>{
+             lock=true
+         },1000)
      })
     </script>
 </body>
