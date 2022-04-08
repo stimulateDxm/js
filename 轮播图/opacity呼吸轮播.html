@@ -66,9 +66,7 @@
        ol li:hover{
            opacity: 0.9;
        }
-    di{
-        position: relative;
-    }
+
     #didi{
         position: absolute;
         display: flex;
@@ -150,7 +148,9 @@
         },500)
     }
   
-
+    timer1=setInterval(()=>{
+            mose()
+         },2000) 
    
      //移入图片时停止播放
     di.addEventListener('mouseenter',()=>{
@@ -164,7 +164,7 @@
          },2000) 
      })
     
-    //  点左向左切换
+    //  点左切换上一张
     lt.addEventListener('click',()=>{
         if(!lock) return;
         lock=false
@@ -180,7 +180,7 @@
             lock=true;
         },500)
     })
-    // 点右向右切换
+    // 点右切换下一张
     gt.addEventListener('click', mose
     )
     //  点击圆点切换到对应的图片

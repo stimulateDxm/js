@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>轮播图</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        div{
+
+        div {
             position: relative;
             margin: 0 auto;
             width: 400px;
@@ -18,58 +20,81 @@
             overflow: hidden;
         }
 
-       ul{
-           width: 2400px;
-           position: absolute;
-           left: 0;
-           top: 0;
-           display: flex;
-           flex-wrap: nowrap;
-        
-       }
-       li{
-           list-style: none;
-       }
-       img{
-          width: 400px;
-          height: 400px;
-       }
-       ol{
-           width: 400px;
-           height: 400px;
-           position: absolute;
-           display: flex;
-           justify-content: space-between;
-           flex-wrap: nowrap;
-           align-items: center;
-       }
-       ol li{
-           background-color: aqua;
-           width: 50px;
-           line-height: 50px;
-           border-radius: 50%;
-           color: white;
-           font-size: 40px;
-           text-align: center;
-           margin-top: -25px;
-           opacity: 0.6;
+        ul {
+            width: 2400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-wrap: nowrap;
 
-       }
-       ol li:hover{
-           opacity: 0.9;
-       }
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+        }
+
+        ol {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        ol li {
+            background-color: aqua;
+            width: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            margin-top: -25px;
+            opacity: 0.6;
+
+        }
+
+        ol li:hover {
+            opacity: 0.9;
+        }
+
+        #di div:last-child {
+            position: absolute;
+            left: 30%;
+            top: 90%;
+            float: right;
+
+        }
+
+        #di div:last-child li {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+        }
     </style>
 </head>
+
 <body>
     <div id="di">
         <ul id="uls">
-         <li><a href=""><img src="./assets/1.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/2.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/3.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/4.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/5.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/6.jpg" alt=""></a></li>
-         <li><a href=""><img src="./assets/1.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/1.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/2.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/3.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/4.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/5.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/6.jpg" alt=""></a></li>
+            <li><a href=""><img src="./assets/1.jpg" alt=""></a></li>
         </ul>
         <ol>
             <li id="lt"> &lt;</li>
@@ -77,65 +102,97 @@
         </ol>
     </div>
     <script>
-     let uls=document.getElementById('uls')
-     let lt=document.getElementById('lt')
-     let gt=document.getElementById('gt')
-     let di=document.getElementById('di')
-     let lock=true;
-     let a=0;
-     let timer1;
-    //  自动向右切换
-     function mose(){
-         clearInterval(timer1)
-         if(!lock)return;
-         lock=false
-        timer1=setInterval(()=>{
+        let uls = document.getElementById('uls')
+        let lt = document.getElementById('lt')
+        let gt = document.getElementById('gt')
+        let di = document.getElementById('di')
+        let lock = true;
+        let a = 0;
+        let timer1;
+
+        //创建对应图片的圆点节点
+        let oDiv = document.createElement('div')
+        oDiv.innerHTML = ` <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         `
+        di.appendChild(oDiv)
+        let oDivLis = oDiv.querySelectorAll('li')
+        oDivLis[0].style.backgroundColor = 'red'
+        //圆点跟着图片切换
+        let vLis = oDivLis.length
+
+        for (let i = 0; i < vLis; i++) {
+           
+            oDivLis[i].addEventListener('click', function () {
+                for (let j = 0; j < vLis; j++) {
+                    oDivLis[j].style.backgroundColor = '#fff'
+                }
+                this.style.backgroundColor = "red"
+                uls.style.left = i * -400 + "px"
+                a = i
+            })
+        }
+       
+        //  向右切换函数
+        function mose() {
+           
+            if (!lock) return;
+            lock = false
+                for (let j = 0; j < vLis; j++) {
+                    oDivLis[j].style.backgroundColor = '#fff'
+                }
             a++
-         uls.style.left=a*-400+"px"
-         if(a===6){
-             a=0
-         }
-         },2000)
-         setTimeout(()=>{
-             lock=true
-         },1000)
-     }
-     mose();
-     //移入图片时停止播放
-     di.addEventListener("mouseenter",()=>{
-        clearInterval(timer1)
-     })
-     //离开图片时播放
-     di.addEventListener("mouseleave",()=>{
-        mose();
-     })
-    //  点左向左切换
-     lt.addEventListener("click",()=>{
-        if(!lock)return;
-         lock=false
-             a--;
-             if(a===-1){
-                 a=5;
-             }
-             uls.style.left=a*-400+"px"
-             setTimeout(()=>{
-             lock=true
-         },1000)
-            
-     })
-// 点右向右切换
-     gt.addEventListener("click",()=>{
-        if(!lock)return;
-         lock=false
-        a++
-         uls.style.left=a*-400+"px"
-         if(a===6){
-             a=0
-         }
-         setTimeout(()=>{
-             lock=true
-         },1000)
-     })
+            if (a === 6) {
+                a = 0
+            }
+            uls.style.left = a * -400 + "px"
+            oDivLis[a].style.backgroundColor = 'red'
+            setTimeout(() => {
+                lock = true
+            }, 500)
+        }
+        timer1 = setInterval(() => {
+            mose();
+        }, 2000)
+        //移入图片时停止播放
+        di.addEventListener("mouseenter", () => {
+            clearInterval(timer1)
+        })
+        //离开图片时播放
+        di.addEventListener("mouseleave", () => {
+            timer1 = setInterval(() => {
+                mose();
+            }, 2000)
+        })
+        //  点左向左切换
+        lt.addEventListener("click", () => {
+            if (!lock) return;
+            lock = false
+            for (let j = 0; j < vLis; j++) {
+             oDivLis[j].style.backgroundColor = '#fff'
+                }
+            a--;
+            if (a === -1) {
+                a = 5;
+            }
+            uls.style.left = a * -400 + "px"
+            oDivLis[a].style.backgroundColor = 'red'
+            setTimeout(() => {
+                lock = true
+            }, 500)
+
+        })
+        // 点右向右切换
+        gt.addEventListener("click", () => {
+            mose();
+        })
+
+
     </script>
 </body>
+
 </html>
