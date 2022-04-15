@@ -40,9 +40,11 @@ Fall.prototype.upFall=function(){
 this.timea= setInterval(()=>{
         this.a++
         this.lis.style.top=this.tops+this.a+'px'
+       if(this.a >539){
+           alert('over')
+       }
     },20)
 
-  
 }
 //一段时间生成一个dom
 let timenew;
