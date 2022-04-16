@@ -40,9 +40,6 @@ Fall.prototype.upFall=function(){
 this.timea= setInterval(()=>{
         this.a++
         this.lis.style.top=this.tops+this.a+'px'
-       if(this.a >539){
-           alert('over')
-       }
     },20)
 
 }
@@ -52,21 +49,22 @@ let timenew;
 let lock=true;
 //下落函数
 function xia(){
-    if(!lock) return;
-    lock=false
+   if(!lock) return
+   lock=false
     clearInterval(timenew)
     timenew=setInterval(()=>{
         let fall=new Fall()
-    },1000)
-    console.log("11")
+    },500)
     setTimeout(()=>{
         lock=true
-    },1000)
+    },200)
 }
 
 //开始
 $('go').addEventListener('click',()=>{
+    $('go').style.display='none'
     xia()
+   
 })
 //暂停
 $('stop').addEventListener('click',()=>{
@@ -77,27 +75,47 @@ $('stop').addEventListener('click',()=>{
    })
     
 })
-//结束
-$('over').addEventListener('click',()=>{
-    clearInterval(timenew)
-    //关闭字母下落
-   arrLi.forEach((vla,i)=>{
-    clearInterval(vla.timea)
-   })
-    
-})
+
 //继续
 $('goon').addEventListener('click',()=>{
+    if(!lock) return
+    lock=false
     xia()
     arrLi.forEach((vla,i)=>{
+        clearInterval(vla.timea)
        vla.timea= setInterval(()=>{
         vla.a++
         vla.lis.style.top=vla.tops+vla.a+'px'
     },20)
 
        })
+       setTimeout(()=>{
+        lock=true
+    },200)
 
 })
+let num=0;
+
+//绑定键盘事件
+document.onkeydown=function(e){
+// if(e.key.toUpperCase)
+let keys=e.key.toUpperCase()
+for (let arr=arrLi.length , i=0; i<arr; i++){
+ if(keys == arrLi[i].lis.innerText && arrLi[i].a >=50 && arrLi[i].a<=590){
+     num++
+     $('num').innerText=`完成的数量：${num}`
+     try{
+        $('dot').removeChild(arrLi[i].lis)
+     }catch(e){
+      console.log(e)
+     }
+    
+    arrLi.splice(i,1)
+ }
+}
+
+
+}
 
 
 

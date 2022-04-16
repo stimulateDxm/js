@@ -30,14 +30,67 @@ section ul li {
   place-items: center;
   font-size: 23px;
 }
-#buts {
+section #go {
+  font-size: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #d7e837;
+  border: 2px solid #ddef15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section #go:hover {
+  opacity: 0.5;
+}
+.selects {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 75vh;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.selects #buts {
   width: 150px;
   height: 150px;
 }
-#buts button {
+.selects #buts button {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 2px solid #57eebc;
   background-color: #91ebcd;
+}
+.selects #select {
+  width: 80px;
+  height: 30px;
+}
+.selects #select li {
+  display: none;
+  width: 80px;
+  line-height: 30px;
+  background-color: #91ebcd;
+  border: 1px solid #57eebc;
+}
+.selects #select li:first-child {
+  display: block;
+}
+.selects #select li:first-child:hover ~ .nums {
+  display: block;
+}
+.selects #select li:hover {
+  background-color: antiquewhite;
+  border: 1px solid #f8fbfa;
+}
+.selects #num {
+  background-color: #91ebcd;
+  border: 1px solid #57eebc;
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 50px;
 }
