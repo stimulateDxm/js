@@ -1,9 +1,15 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 li {
   list-style: none;
+}
+.w {
+  width: 80vw;
+  margin: 0 auto;
+  height: 100vh;
 }
 section {
   position: relative;
@@ -11,6 +17,7 @@ section {
   height: 75vh;
   margin: 0 auto;
   background-color: #aeedd8;
+  overflow: hidden;
 }
 section ul {
   width: 100%;
@@ -40,6 +47,7 @@ section #go {
   position: absolute;
   top: 50%;
   left: 50%;
+  cursor: pointer;
   transform: translate(-50%, -50%);
 }
 section #go:hover {
@@ -54,10 +62,11 @@ section #go:hover {
   margin-top: 10px;
 }
 .selects #buts {
-  display: flex ;
+  display: flex;
   flex-wrap: wrap;
 }
 .selects #buts button {
+  cursor: pointer;
   width: 50px;
   height: 50px;
   margin-right: 30px;
@@ -65,41 +74,35 @@ section #go:hover {
   border: 2px solid #57eebc;
   background-color: #91ebcd;
 }
-.selects #select {
-  width: 80px;
-  height: 30px;
+.selects .s {
+  position: absolute;
+  top: 77% ;
+  left: 50%;
 }
-.selects #select li {
-  width: 80px;
-  line-height: 30px;
-  background-color: #91ebcd;
-  border: 1px solid #57eebc;
-}
-.selects #select li:first-child {
-  display: block;
-  width: 80px;
-  line-height: 35px;
-  background-color: #d7e837;
-  border: 1px solid #ddef15;
-}
-.selects #select li:nth-child(2) {
-  display: block;
-  background-color: #d7e837;
-  border: 1px solid #ddef15;
-  opacity: 0.6;
-}
-.selects #select .nums:hover {
-  background-color: #d7e837;
-  border: 1px solid #ddef15;
-  opacity: 0.6;
+.selects .olnums {
+  position: absolute;
+  top: 50% ;
+  left: 50%;
+  transform: translate(-50%, -120%);
 }
 .selects #num,
-.selects #miss {
+.selects #miss,
+.selects #imte {
   background-color: #91ebcd;
   border: 1px solid #57eebc;
   text-align: center;
   width: 150px;
   height: 30px;
   line-height: 30px;
-  margin-left: 30px;
+}
+.selects .i {
+  display: none;
+}
+.selects #over {
+  background-color: #cee753;
+  border: 1px solid #8ecb50;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
 }
