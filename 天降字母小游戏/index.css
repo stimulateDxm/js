@@ -70,21 +70,31 @@ section #go:hover {
   height: 30px;
 }
 .selects #select li {
-  display: none;
   width: 80px;
   line-height: 30px;
   background-color: #91ebcd;
   border: 1px solid #57eebc;
 }
-.selects #select li:first-child,
+.selects #select li:first-child {
+  display: block;
+  width: 80px;
+  line-height: 35px;
+  background-color: #d7e837;
+  border: 1px solid #ddef15;
+}
 .selects #select li:nth-child(2) {
   display: block;
+  background-color: #d7e837;
+  border: 1px solid #ddef15;
+  opacity: 0.6;
 }
-.selects #select li:hover {
-  background-color: antiquewhite;
-  border: 1px solid #f8fbfa;
+.selects #select .nums:hover {
+  background-color: #d7e837;
+  border: 1px solid #ddef15;
+  opacity: 0.6;
 }
-.selects #num {
+.selects #num,
+.selects #miss {
   background-color: #91ebcd;
   border: 1px solid #57eebc;
   text-align: center;
