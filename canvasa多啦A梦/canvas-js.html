@@ -28,29 +28,29 @@
          ctx.fillText('你喜欢多啦A梦吗',0,100)
          ctx.strokeStyle='pind'
          ctx.stroke()
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             face(225, 225, 100, "blue")//脸外层
             face(225, 240, 80, "#fff")//脸内层
         }, 1000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
             eye(200, 160, 25, 210, 8, '#000', '#fff')//左眼
             eye(250, 160, 25, 240, 8, '#000', '#fff')//右眼
         }, 2000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             eye(225, 185, 10, 222, 3, '#fff', '#fe0069')//鼻子
         }, 3000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
             //脸肉肉
             pi(155, 225, 25, 0.4, 1.7, '#fff')
             pi(290, 226, 25, 1.4, 0.65, '#fff')
         }, 3000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             lines(225, 194, 225, 249)
 
@@ -65,21 +65,21 @@
 
         }, 4000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             pi(221, 228, 66, 0.1, 0.9, '#fe0069')//嘴
 
 
         }, 5000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             pi(221, 295, 25, 1.06, 1.94, '#fe8400')//嘴
             pi(221, 227.65, 66, 0.38, 0.62, '#fe8400')//嘴
 
         }, 6000)
 
-        setTimeout(function fun() {
+        setTimeout(()=> {
 
             rects(150, 320, 150, 160, "blue")//身体
             pi(225, 488, 20, 1.1, 1.9, '#fff')
@@ -93,10 +93,6 @@
             lines(170, 390, 271, 390)
 
 
-            linez(286, 302, 500, 485, 287, 350)//右手
-            linez(340, 300, 500, 485, 310, 400, '#fff', '#fff')
-            pi(330, 355, 25, 0, 2, '#fff')
-
             rects(165, 305, 120, 15, '#fe0069')//钉铛绳
             pi(166, 312, 8, 0.5, 1.5, '#fe0069')//钉铛绳
             pi(284, 312, 8, 1.5, 0.5, '#fe0069')//钉铛绳
@@ -107,9 +103,7 @@
             lines(221, 347, 221, 365)
         }, 7000)
 
-        setTimeout(function fun() {
-
-
+        setTimeout(()=> {
 
             linez(142, 280, -30, 165, 150, 330)
             linez(100, 200, -30, 165, 88, 275, '#fff', '#fff')
@@ -117,7 +111,14 @@
 
         }, 8000)
 
-        setTimeout(function fun() {
+
+        setTimeout(()=>{
+            linez(286, 302, 500, 485, 287, 350)//右手
+            linez(340, 300, 500, 485, 310, 400, '#fff', '#fff')
+            pi(330, 355, 25, 0, 2, '#fff')
+        },9000)
+
+        setTimeout(()=> {
 
             rects(150, 480, 55, 20, '#fff')//左脚
             pi(150, 490, 10, 0.4, 1.6, "#fff")
@@ -126,9 +127,8 @@
             pi(243, 490, 10, 0.4, 1.6, "#fff")
             pi(299, 490, 10, 1.4, 0.6, "#fff")
 
+        }, 10000)
 
-
-        }, 9000)
 
 
         //眼，鼻子函数
